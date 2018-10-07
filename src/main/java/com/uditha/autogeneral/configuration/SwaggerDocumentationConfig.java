@@ -13,27 +13,18 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SwaggerDocumentationConfig {
 
-    ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-            .title("Auto &amp; General test API")
-            .description("This is mplementation of AutoGeneral API")
-            .license("")
-            .licenseUrl("http://unlicense.org")
-            .termsOfServiceUrl("")
-            .version("1.0")
-            .contact(new Contact("","", ""))
-            .build();
-    }
+	ApiInfo apiInfo() {
+		return new ApiInfoBuilder().title("Auto &amp; General test API")
+				.description("This is mplementation of AutoGeneral API").license("").licenseUrl("http://unlicense.org")
+				.termsOfServiceUrl("").version("1.0").contact(new Contact("", "", "")).build();
+	}
 
-    @Bean
-    public Docket customImplementation(){
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                    .apis(RequestHandlerSelectors.basePackage("com.uditha.autogeneral.api"))
-                    .build()
-                .directModelSubstitute(org.joda.time.LocalDate.class, java.sql.Date.class)
-                .directModelSubstitute(org.joda.time.DateTime.class, java.util.Date.class)
-                .apiInfo(apiInfo());
-    }
+	@Bean
+	public Docket customImplementation() {
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("com.uditha.autogeneral.api")).build()
+				.directModelSubstitute(org.joda.time.LocalDate.class, java.sql.Date.class)
+				.directModelSubstitute(org.joda.time.DateTime.class, java.util.Date.class).apiInfo(apiInfo());
+	}
 
 }

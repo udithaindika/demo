@@ -4,6 +4,18 @@ import java.util.Stack;
 
 public class BracketsUtil {
 
+	private static boolean isMatchingBracket(char start, char end) {
+		if (start == '{' && end == '}') {
+			return true;
+		} else if (start == '[' && end == ']') {
+			return true;
+		} else if (start == '(' && end == ')') {
+			return true;
+		}
+
+		return false;
+	}
+
 	public static boolean isValidBrackets(String input) {
 		if (input == null || input.trim().isEmpty()) {
 			return true;
@@ -26,18 +38,6 @@ public class BracketsUtil {
 		}
 
 		return brackets.size() == 0;
-	}
-
-	private static boolean isMatchingBracket(char start, char end) {
-		if (start == '{' && end == '}') {
-			return true;
-		} else if (start == '[' && end == ']') {
-			return true;
-		} else if (start == '(' && end == ')') {
-			return true;
-		}
-
-		return false;
 	}
 
 }

@@ -47,19 +47,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
 
-	@ExceptionHandler(NotFoundException.class)
-	public final ResponseEntity<ToDoItemNotFoundError> handleNotFoundException(NotFoundException ex,
-			WebRequest request) {
-
-		ToDoItemNotFoundError error = new ToDoItemNotFoundError();
-		error.setName("NotFoundError");
-
-		ToDoItemNotFoundErrorDetails errorDetail = new ToDoItemNotFoundErrorDetails();
-		errorDetail.setMessage(ex.getMessage());
-
-		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-	}
-
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
@@ -81,6 +68,19 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		}
 
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(NotFoundException.class)
+	public final ResponseEntity<ToDoItemNotFoundError> handleNotFoundException(NotFoundException ex,
+			WebRequest request) {
+
+		ToDoItemNotFoundError error = new ToDoItemNotFoundError();
+		error.setName("NotFoundError");
+
+		ToDoItemNotFoundErrorDetails errorDetail = new ToDoItemNotFoundErrorDetails();
+		errorDetail.setMessage(ex.getMessage());
+
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 
 }

@@ -35,7 +35,7 @@ public class TodoApiController implements TodoApi {
 	public ResponseEntity<ToDoItem> todoIdPatch(
 			@ApiParam(value = "id", required = true) @PathVariable("id") BigDecimal id,
 			@ApiParam(value = "", required = true) @Valid @RequestBody ToDoItemUpdateRequest body) {
-		ToDoItem todoItem = todoService.updateTodoItem(id , body);
+		ToDoItem todoItem = todoService.updateTodoItem(id, body);
 		return new ResponseEntity<ToDoItem>(todoItem, HttpStatus.OK);
 	}
 

@@ -305,34 +305,6 @@
 					"example": true
 				}
 			}
-		},
-		"BracersTestResult": {
-			"type": "object",
-			"properties": {
-				"input": {
-					"type": "string"
-				},
-				"result": {
-					"type": "boolean"
-				},
-				"expected": {
-					"type": "boolean"
-				},
-				"isCorrect": {
-					"type": "boolean"
-				}
-			}
-		},
-		"ToDoTestResult": {
-			"type": "object",
-			"properties": {
-				"input": {
-					"type": "string"
-				},
-				"result": {
-					"$ref": "#/definitions/ToDoItem"
-				}
-			}
 		}
 	}
 }

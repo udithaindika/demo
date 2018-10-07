@@ -8,30 +8,29 @@ import org.springframework.context.annotation.ComponentScan;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-
 @SpringBootApplication
 @EnableSwagger2
-@ComponentScan(basePackages = {"com.uditha.autogeneral" })
+@ComponentScan(basePackages = { "com.uditha.autogeneral" })
 public class AutogeneralApplication implements CommandLineRunner {
 
-    class ExitException extends RuntimeException implements ExitCodeGenerator {
-        private static final long serialVersionUID = 1L;
+	class ExitException extends RuntimeException implements ExitCodeGenerator {
+		private static final long serialVersionUID = 1L;
 
-        @Override
-        public int getExitCode() {
-            return 10;
-        }
+		@Override
+		public int getExitCode() {
+			return 10;
+		}
 
-    }
+	}
 
-    public static void main(String[] args) throws Exception {
-        new SpringApplication(AutogeneralApplication.class).run(args);
-    }
+	public static void main(String[] args) throws Exception {
+		new SpringApplication(AutogeneralApplication.class).run(args);
+	}
 
-    @Override
-    public void run(String... arg0) throws Exception {
-        if (arg0.length > 0 && arg0[0].equals("exitcode")) {
-            throw new ExitException();
-        }
-    }
+	@Override
+	public void run(String... arg0) throws Exception {
+		if (arg0.length > 0 && arg0[0].equals("exitcode")) {
+			throw new ExitException();
+		}
+	}
 }

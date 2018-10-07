@@ -17,14 +17,6 @@ public class TodoService {
 
 	Map<BigDecimal, ToDoItem> todoRepository = new HashMap<>();
 
-	public ToDoItem getTodoItem(BigDecimal id) {
-		ToDoItem toDoItem = todoRepository.get(id);
-		if (toDoItem == null) {
-			throw new NotFoundException(String.format("Item with %n not found", id.intValue()));
-		}
-		return toDoItem;
-	}
-
 	public ToDoItem createTodoItem(ToDoItemAddRequest body) {
 		int nextID = todoRepository.size() + 1;
 
@@ -38,11 +30,19 @@ public class TodoService {
 
 		return item;
 	}
-	
+
+	public ToDoItem getTodoItem(BigDecimal id) {
+		ToDoItem toDoItem = todoRepository.get(id);
+		if (toDoItem == null) {
+			throw new NotFoundException(String.format("Item with %n not found", id.intValue()));
+		}
+		return toDoItem;
+	}
+
 	public ToDoItem updateTodoItem(BigDecimal id, ToDoItemUpdateRequest body) {
 
 		ToDoItem toDoItem = getTodoItem(id);
-		
+
 		toDoItem.setText(body.getText());
 		toDoItem.setIsCompleted(body.getIsCompleted());
 
