@@ -48,7 +48,7 @@ public class TasksApiControllerTest {
 				+ "sdfsadfTest  Input Test Input Test Inp sdfsadfTest  Input Test Input Test Inp ";
 
 		this.mockMvc.perform(get("/tasks/validateBrackets").param("input", input)).andExpect(status().isBadRequest())
-				.andExpect(jsonPath("name").value("Validation Error"));
+				.andExpect(jsonPath("name").value("ValidationError"));
 	}
 
 }
