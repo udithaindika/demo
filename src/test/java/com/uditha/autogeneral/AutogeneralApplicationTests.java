@@ -12,5 +12,4 @@ public class AutogeneralApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }
